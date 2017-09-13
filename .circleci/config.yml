@@ -7,10 +7,10 @@ jobs:
         steps:
            - checkout
            - run: npm install
-      
+           - run: npm test
     test:
-        steps:
-            - run: npm test
+        post:
+            - bash <(curl -s https://codecov.io/bash)
             
 workflows:
   version: 2
