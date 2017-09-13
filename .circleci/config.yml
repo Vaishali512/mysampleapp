@@ -8,8 +8,8 @@ jobs:
            - checkout
            - run: npm install
            - run: npm test
-    post:
-        - bash <(curl -s https://codecov.io/bash)
+        post:
+            - bash <(curl -s https://codecov.io/bash)
             
 workflows:
   version: 2
