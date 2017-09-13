@@ -8,15 +8,17 @@ jobs:
       - checkout
       - run: npm install
       - run: npm test
-    dependencies:
-    override:
-     - sbt coverage test:compile
-  test:
-    override:
-        - sbt coverage test
-        - sbt coverageReport
+
+ test:
   post:
-        - mkdir -p $CIRCLE_ARTIFACTS/scala-2.10
-        - mv target/scala-2.10/coverage-report  $CIRCLE_ARTIFACTS/scala-2.10/coverage-report
-        - mv target/scala-2.10/scoverage-report $CIRCLE_ARTIFACTS/scala-2.10/scoverage-report
-                    
+    - bash <(curl -s https://codecov.io/bash)
+ 
+ workflows:
+  version: 2
+  build-test-and-deploy:
+    jobs:
+      - build
+      - test:
+          requires:
+            - build
+			
