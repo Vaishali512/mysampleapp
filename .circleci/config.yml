@@ -6,8 +6,6 @@ jobs:
     working_directory: ~/tmp
     steps:
       - checkout
-  test:
-    steps:
       - run: npm install
       - run: npm test
       
