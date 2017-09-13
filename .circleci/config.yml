@@ -9,17 +9,11 @@ jobs:
            - run: npm install
            - run: npm test
    test:
-    docker:
-      - image: circleci/node:7 
-    steps:
-      - checkout
-      - run:
-          name: Test
-          command: npm test
-      -run:
-          name: Code Coverage
-          command: 'curl -s https://codecov.io/bash'
-          
+        docker:
+            - image: circleci/node:7 
+        steps:
+            - checkout
+            - run: npm test
             
 workflows:
   version: 2
